@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Electronics Engineering Technology
+Turma 2ECR • Ano 2023
+Checkpoint 01: Saturação e Chaveamento Rápido com Transistores BJT e MOSFETs
+
+ENUNCIADO ORIGINAL:
+Dimensionar os resistores de polarização de base e gate para assegurar saturação forçada com fator beta_forçado = 10 em relés e acionadores de potência indutivos.

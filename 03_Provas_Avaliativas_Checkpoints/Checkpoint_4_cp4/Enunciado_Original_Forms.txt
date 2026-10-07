@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Electronics Engineering Technology
+Turma 2ECR • Ano 2023
+Checkpoint 04: Redes Industriais e Automotivas: Protocolo CAN Bus 2.0B
+
+ENUNCIADO ORIGINAL:
+Implementar a temporização de bit do controlador CAN (Bit Timing) para barramento a 500 kbps, configurando os segmentos Sync_Seg, Prop_Seg, Phase_Seg1 e Phase_Seg2.

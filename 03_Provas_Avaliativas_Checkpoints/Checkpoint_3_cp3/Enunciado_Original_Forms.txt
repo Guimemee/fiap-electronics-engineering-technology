@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Electronics Engineering Technology
+Turma 2ECR • Ano 2023
+Checkpoint 03: Barramentos Seriais de Alta Velocidade: Comparativo SPI vs I2C
+
+ENUNCIADO ORIGINAL:
+Dimensionar os resistores de pull-up do barramento I2C em modo Fast-Mode (400 kHz) para compensar a capacitância parasita do cabo de telemetria C_bus = 200 pF.

@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Electronics Engineering Technology
+Turma 2ECR • Ano 2023
+Checkpoint 05: Controle de Atuadores via PWM em Ponte H com Proteção Dead-Time
+
+ENUNCIADO ORIGINAL:
+Dimensionar o tempo morto (Dead-Time) entre os sinais de disparo dos transistores high-side e low-side da Ponte H para prevenir curto-circuito em condução cruzada (Shoot-Through).

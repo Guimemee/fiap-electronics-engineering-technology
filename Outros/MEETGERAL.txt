@@ -1,0 +1,12 @@
+- Seu login: guilherme.dsilva
+
+- Seu supervisor: Nilton
+
+- ID do pedido: https://app.clearsale.com.br/V2/Operacao/AMA/Operar#/Analise/Pedido/2104184507
+
+- tipo de dúvida: Pedido sem telefone de contanto e sem CPF.
+
+- Se teve validação, enviar toda a validação e
+conjuntura do que o analista analisou do pedido.
+
+ostensiva: "solicitacao.ostensiva@clearsale.zendesk.com". Com o numero do pedido no corpo do e-mail

@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Electronics Engineering Technology
+Turma 2ECR • Ano 2023
+Checkpoint 06: Sistema Embarcado Completo de Telemetria Florestal LoRaWAN
+
+ENUNCIADO ORIGINAL:
+Integrar os módulos de sensoriamento, processador ARM Cortex-M e rádio transmissor LoRaWAN em regime de ultra baixo consumo (Deep Sleep) para autonomia de 5 anos em bateria.

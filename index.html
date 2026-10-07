@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIAP • Electronics Engineering Technology | Turma 2ECR • 2023</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+  <style>
+    :root {
+      --bg-dark: #120a04;
+      --bg-card: #211208;
+      --bg-surface: #331c0c;
+      --border: #4d2b14;
+      --text-main: #f3f4f6;
+      --text-muted: #94a3b8;
+      --primary: #f97316;
+      --secondary: #eab308;
+      --accent: #fb923c;
+      --radius: 12px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding-top: 80px;
+    }
+
+    [id] { scroll-margin-top: 95px; }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(10, 14, 23, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 10px 24px;
+    }
+
+    .header-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .header-row-1 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-row-1 .brand-fiap {
+      color: var(--primary);
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .header-row-2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .turma-tag {
+      font-size: 0.82rem;
+      line-height: 1.3;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .btn-repo-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      line-height: 1.3;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 5px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .btn-repo-top:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+      filter: brightness(1.1);
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero-banner {
+      margin-bottom: 32px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--primary);
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .metric-val {
+      font-family: var(--font-mono);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .metric-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .nav-tab {
+      padding: 10px 18px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .nav-tab:hover, .nav-tab.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .cp-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--primary);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    .problem-box, .plot-box {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .box-header {
+      background: var(--bg-surface);
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .box-content {
+      padding: 16px;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    .formula-box {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(129, 140, 248, 0.05));
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .formula-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .formula-latex {
+      font-size: 1.25rem;
+      color: #ffffff;
+      overflow-x: auto;
+      padding: 6px 0;
+    }
+
+    .symbolab-container {
+      margin-bottom: 24px;
+    }
+
+    .symbolab-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .step-header {
+      margin-bottom: 8px;
+    }
+
+    .step-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .step-content {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+    }
+
+    .plot-img-container {
+      padding: 16px;
+      background: var(--bg-dark);
+      text-align: center;
+    }
+
+    .plot-img-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+
+    footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="header-row-1">
+        <span class="brand-fiap">FIAP</span>
+        <span class="brand-sep">•</span>
+        <span>Engenharia da Computação</span>
+      </div>
+      <div class="header-row-2">
+        <span class="turma-tag">TURMA 2ECR • 2023</span>
+        <a href="https://github.com/Guimemee/fiap-electronics-engineering-technology" class="btn-repo-top" target="_blank" rel="noopener">Ver Repositório ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="hero-banner">
+      <img src="card_technologies.svg" alt="FIAP Electronics Engineering Technology Banner" />
+    </div>
+
+    <div class="metrics-grid">
+      
+        <div class="metric-card">
+          <div class="metric-label">CLOCK DO CORE</div>
+          <div class="metric-val">168 MHz</div>
+          <div class="metric-sub">Microcontrolador 32-bit ARM Cortex-M</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">BARRAMENTO CAN BUS</div>
+          <div class="metric-val">1.0 Mbps</div>
+          <div class="metric-sub">Comunicação Diferencial com CRC</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">AMOSTRAGEM ADC</div>
+          <div class="metric-val">12 BITS</div>
+          <div class="metric-sub">Conversor Analógico-Digital SAR</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">PWM DE POTÊNCIA</div>
+          <div class="metric-val">100 kHz</div>
+          <div class="metric-sub">Controle de Velocidade em Ponte H</div>
+        </div>
+    </div>
+
+    <nav class="nav-tabs">
+      <a href="#cp1" class="nav-tab active">CP 1: Saturação e Chaveamento R...</a>
+      <a href="#cp2" class="nav-tab">CP 2: Condicionamento e Aquisiç...</a>
+      <a href="#cp3" class="nav-tab">CP 3: Barramentos Seriais de Al...</a>
+      <a href="#cp4" class="nav-tab">CP 4: Redes Industriais e Autom...</a>
+      <a href="#cp5" class="nav-tab">CP 5: Controle de Atuadores via...</a>
+      <a href="#cp6" class="nav-tab">CP 6: Sistema Embarcado Complet...</a>
+    </nav>
+
+    
+      <section id="cp1" class="cp-section">
+        <div class="section-badge">CHECKPOINT 01 • 2ECR 2023</div>
+        <h2 class="section-title">Saturação e Chaveamento Rápido com Transistores BJT e MOSFETs</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp1')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp1" class="box-content">
+            <p>Dimensionar os resistores de polarização de base e gate para assegurar saturação forçada com fator beta_forçado = 10 em relés e acionadores de potência indutivos.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$I_B \ge \frac{I_C}{\beta_{forçado}}, \quad R_B \le \frac{V_{in} - V_{BE}}{I_B}, \quad V_{CE(sat)} \le 0,2 \text{ V}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Corrente de Coletor em Carga Indutiva</span>
+              </div>
+              <div class="step-content">
+                <p>Para acionamento de relé de 12 V com resistência de bobina R_{bobina} = 120 \Omega: I_C = \frac{12}{120} = 100 \text{ mA}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Cálculo da Corrente de Base para Saturação Profunda</span>
+              </div>
+              <div class="step-content">
+                <p>Adotando \beta_{forçado} = 10: I_B = \frac{100 \text{ mA}}{10} = 10 \text{ mA}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Resistor de Base para Saída de Microcontrolador 3.3V</span>
+              </div>
+              <div class="step-content">
+                <p>R_B = \frac{3,3 - 0,7}{0,01} = \frac{2,6}{0,01} = 260 \Omega \implies \text{Adotado } 270 \Omega.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Diodo Roda-Livre (Flyback)</span>
+              </div>
+              <div class="step-content">
+                <p>Inclusão obrigatória de diodo 1N4007 em antiparalelo com a bobina para absorver surtos de tensão indutiva V = -L \frac{di}{dt}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão do Driver</span>
+              </div>
+              <div class="step-content">
+                <p>Tempo de chaveamento t_{on} = 45 \text{ ns} e dissipação térmica inferior a 20 mW no BJT.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_1_cp1/grafico_resolucao.png" alt="Gráfico Saturação e Chaveamento Rápido com Transistores BJT e MOSFETs" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp2" class="cp-section">
+        <div class="section-badge">CHECKPOINT 02 • 2ECR 2023</div>
+        <h2 class="section-title">Condicionamento e Aquisição de Sinais com ADC SAR de 12 Bits</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp2')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp2" class="box-content">
+            <p>Calcular a resolução de tensão, o erro de quantização e dimensionar o estágio de proteção com diodos zener para um conversor ADC de 12 bits com tensão de referência V_ref = 3.3 V.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$LSB = \frac{V_{ref}}{2^N - 1} = \frac{3,3}{4095} \approx 805,86 \, \mu\text{V}, \quad SNR = 6,02 N + 1,76 \text{ dB} \approx 74 \text{ dB}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Quantização e LSB (Least Significant Bit)</span>
+              </div>
+              <div class="step-content">
+                <p>Com N = 12 bits e 4096 níveis de quantização, 1 \text{ LSB} = \frac{3,3}{4095} \approx 805,86 \mu\text{V}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Erro Máximo de Quantização</span>
+              </div>
+              <div class="step-content">
+                <p>E_q = \pm \frac{1}{2} LSB \approx \pm 402,9 \mu\text{V}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Relação Sinal-Ruído Teórica (SNR)</span>
+              </div>
+              <div class="step-content">
+                <p>SNR = 6,02(12) + 1,76 = 74,0 \text{ dB}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Circuito de Proteção e Clamp</span>
+              </div>
+              <div class="step-content">
+                <p>Resistor limitador de 1 \text{ k}\Omega e diodo Schottky BAT54S limitando tensões de entrada estritamente entre -0,3 V e 3,6 V.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão Metrológica</span>
+              </div>
+              <div class="step-content">
+                <p>O sistema garante precisão de leitura de sensores de temperatura na floresta com resolução de 0,05 °C.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_2_cp2/grafico_resolucao.png" alt="Gráfico Condicionamento e Aquisição de Sinais com ADC SAR de 12 Bits" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp3" class="cp-section">
+        <div class="section-badge">CHECKPOINT 03 • 2ECR 2023</div>
+        <h2 class="section-title">Barramentos Seriais de Alta Velocidade: Comparativo SPI vs I2C</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp3')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp3" class="box-content">
+            <p>Dimensionar os resistores de pull-up do barramento I2C em modo Fast-Mode (400 kHz) para compensar a capacitância parasita do cabo de telemetria C_bus = 200 pF.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$R_{p(mín)} = \frac{V_{cc} - V_{OL}}{I_{OL}} = \frac{3,3 - 0,4}{3 \times 10^{-3}} \approx 967 \, \Omega, \quad R_{p(máx)} = \frac{t_r}{0,8473 \cdot C_b}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Tempo Máximo de Subida (Rise Time) no Fast-Mode</span>
+              </div>
+              <div class="step-content">
+                <p>A especificação I2C Fast-Mode (400 kHz) estabelece tempo máximo de subida t_r \le 300 \text{ ns}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Resistência Máxima de Pull-Up</span>
+              </div>
+              <div class="step-content">
+                <p>R_{p(máx)} = \frac{300 \times 10^{-9}}{0,8473 \times 200 \times 10^{-12}} = \frac{300}{0,16946} \approx 1.770 \Omega.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Resistência Mínima de Pull-Up</span>
+              </div>
+              <div class="step-content">
+                <p>Para garantir que a saída em nível baixo não drene mais que I_{OL} = 3 \text{ mA}: R_{p(mín)} = \frac{3,3 - 0,4}{0,003} \approx 967 \Omega.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Seleção do Valor Comercial E24</span>
+              </div>
+              <div class="step-content">
+                <p>Adotado R_p = 1,5 \text{ k}\Omega, satisfazendo a faixa [967 \Omega, 1770 \Omega].</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão do Barramento</span>
+              </div>
+              <div class="step-content">
+                <p>Sinais SDA e SCL apresentam bordas limpas sem overshoot e taxa de erros de transmissão zero.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_3_cp3/grafico_resolucao.png" alt="Gráfico Barramentos Seriais de Alta Velocidade: Comparativo SPI vs I2C" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp4" class="cp-section">
+        <div class="section-badge">CHECKPOINT 04 • 2ECR 2023</div>
+        <h2 class="section-title">Redes Industriais e Automotivas: Protocolo CAN Bus 2.0B</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp4')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp4" class="box-content">
+            <p>Implementar a temporização de bit do controlador CAN (Bit Timing) para barramento a 500 kbps, configurando os segmentos Sync_Seg, Prop_Seg, Phase_Seg1 e Phase_Seg2.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$t_{bit} = TQ \times (\text{Sync} + \text{Prop} + \text{Phase1} + \text{Phase2}), \quad \text{Sample Point} \approx 87,5\%$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Tempo Total de 1 Bit</span>
+              </div>
+              <div class="step-content">
+                <p>Para taxa de 500 kbps: t_{bit} = \frac{1}{500.000} = 2,0 \mu\text{s}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Definição do Quantum de Tempo (TQ)</span>
+              </div>
+              <div class="step-content">
+                <p>Com clock de periférico f_{APB1} = 42 \text{ MHz} e prescaler BRP = 6: TQ = \frac{6}{42 \text{ MHz}} = 142,85 \text{ ns}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Distribuição dos Quanta de Tempo</span>
+              </div>
+              <div class="step-content">
+                <p>Total de 14 TQ: Sync_Seg = 1 TQ; Prop_Seg = 6 TQ; Phase_Seg1 = 5 TQ; Phase_Seg2 = 2 TQ.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Verificação do Ponto de Amostragem (Sample Point)</span>
+              </div>
+              <div class="step-content">
+                <p>\text{Sample Point} = \frac{1 + 6 + 5}{14} = \frac{12}{14} \approx 85,7\%, em perfeita conformidade com as normas CiA.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão da Rede</span>
+              </div>
+              <div class="step-content">
+                <p>Comunicação diferencial robusta com transceptores MCP2551 garantindo alcance de até 100 m na instalação industrial.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_4_cp4/grafico_resolucao.png" alt="Gráfico Redes Industriais e Automotivas: Protocolo CAN Bus 2.0B" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp5" class="cp-section">
+        <div class="section-badge">CHECKPOINT 05 • 2ECR 2023</div>
+        <h2 class="section-title">Controle de Atuadores via PWM em Ponte H com Proteção Dead-Time</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp5')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp5" class="box-content">
+            <p>Dimensionar o tempo morto (Dead-Time) entre os sinais de disparo dos transistores high-side e low-side da Ponte H para prevenir curto-circuito em condução cruzada (Shoot-Through).</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$t_{dead} \ge t_{off(max)} - t_{on(min)} + t_{prop(delay)} \approx 250 \text{ ns}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Dinâmica de Chaveamento dos MOSFETs</span>
+              </div>
+              <div class="step-content">
+                <p>Tempo de desligamento máximo t_{off} = 180 \text{ ns}; tempo de subida mínimo t_{on} = 40 \text{ ns}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Atraso de Propagação do Gate Driver</span>
+              </div>
+              <div class="step-content">
+                <p>O driver IR2104 introduz skew de propagação de \approx 50 \text{ ns}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Margem de Segurança Térmica</span>
+              </div>
+              <div class="step-content">
+                <p>Adotar margem de proteção de 50 ns para variações de temperatura até 85 °C.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Tempo Morto Mínimo Resultante</span>
+              </div>
+              <div class="step-content">
+                <p>t_{dead} \ge 180 - 40 + 50 + 50 = 240 \text{ ns} \implies \text{Configurado timer com } 300 \text{ ns}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão de Eficiência Mecânica</span>
+              </div>
+              <div class="step-content">
+                <p>Controle bidirecional suave de motor DC de 24 V sem aquecimento residual nos MOSFETs.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_5_cp5/grafico_resolucao.png" alt="Gráfico Controle de Atuadores via PWM em Ponte H com Proteção Dead-Time" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp6" class="cp-section">
+        <div class="section-badge">CHECKPOINT 06 • 2ECR 2023</div>
+        <h2 class="section-title">Sistema Embarcado Completo de Telemetria Florestal LoRaWAN</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp6')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp6" class="box-content">
+            <p>Integrar os módulos de sensoriamento, processador ARM Cortex-M e rádio transmissor LoRaWAN em regime de ultra baixo consumo (Deep Sleep) para autonomia de 5 anos em bateria.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$I_{médio} = \frac{I_{ativo} \cdot t_{ativo} + I_{sleep} \cdot t_{sleep}}{t_{ciclo}}, \quad \text{Autonomia} = \frac{C_{bateria}}{I_{médio}}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Perfil de Consumo Ativo</span>
+              </div>
+              <div class="step-content">
+                <p>No ciclo de transmissão (1 segundo a cada 10 minutos): corrente ativa I_{ativo} = 35 \text{ mA}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Perfil de Consumo em Modo Hibernação (Deep Sleep)</span>
+              </div>
+              <div class="step-content">
+                <p>Durante o intervalo inativo de 599 segundos: corrente residual I_{sleep} = 4,2 \, \mu\text{A}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Corrente Média Ponderada</span>
+              </div>
+              <div class="step-content">
+                <p>I_{médio} = \frac{35 \text{ mA} \times 1\text{s} + 0,0042 \text{ mA} \times 599\text{s}}{600\text{s}} = \frac{35 + 2,516}{600} \approx 62,5 \, \mu\text{A}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Cálculo da Vida Útil da Bateria</span>
+              </div>
+              <div class="step-content">
+                <p>Com célula LiSOCl_2 de 3.6 V / 3000 mAh e desclassificação de 80\%: Vida = \frac{2400 \text{ mAh}}{0,0625 \text{ mA}} = 38.400 \text{ horas} \approx 4,38 \text{ anos}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão do Desafio Natura</span>
+              </div>
+              <div class="step-content">
+                <p>Sistema 100% autônomo e hermético operando na selva sem manutenção recarregável.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_6_cp6/grafico_resolucao.png" alt="Gráfico Sistema Embarcado Completo de Telemetria Florestal LoRaWAN" loading="lazy" />
+          </div>
+        </div>
+      </section>
+  </main>
+
+  <footer>
+    <p>Bacharelado em Engenharia da Computação • <strong>FIAP</strong></p>
+    <p>Autor: Guilherme Macário (<a href="https://github.com/Guimemee" target="_blank">@Guimemee</a>) • Turma 2ECR • Ano 2023</p>
+    <p>Repositório Oficial: <a href="https://github.com/Guimemee/fiap-electronics-engineering-technology" target="_blank">github.com/Guimemee/fiap-electronics-engineering-technology</a></p>
+  </footer>
+
+  <script>
+    function copyText(elemId) {
+      const text = document.getElementById(elemId).innerText;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => alert('Enunciado copiado para a área de transferência!'));
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('Enunciado copiado!');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "ano": "2023",
+  "turma": "2ECB",
+  "disciplina": "Electronics Engineering Technology",
+  "tema": "Aplicação de LEDs na produção de alimentos",
+  "dataEntrega": "07/06/2023 23:55",
+  "descricao": "O uso de diodos e LEDs em sistemas de iluminação para agricultura pode ser mais eficiente energeticamente do que as tecnologias de iluminação tradicionais. Como forma de aumentar a produção de alimentos, desenvolva uma aplicação microcontrolada utilizando LEDs em ambientes controlados, indique o comprimento de onda escolhido justificando sua escolha e, apresente a solução (circuito elétrico simulado) através de um vídeo pitch de 5 minutos.\n",
+  "integrantes": "INTEGRANTES\n96020 - CAIO EDUARDO VIEIRA DA SILVA",
+  "comentarios": "COMENTÁRIOS\nAnexar Arquivos",
+  "anexosProf": [
+    {
+      "name": "KraftHeinz.pdf",
+      "href": "https://on1.fiap.com.br/updown/upload_fiap/alunos/trabalhoGraduacao/arquivosAnexo/KraftHeinz.pdf"
+    }
+  ],
+  "entregaAluno": []
+}

@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Electronics Engineering Technology
+Turma 2ECR • Ano 2023
+Checkpoint 02: Condicionamento e Aquisição de Sinais com ADC SAR de 12 Bits
+
+ENUNCIADO ORIGINAL:
+Calcular a resolução de tensão, o erro de quantização e dimensionar o estágio de proteção com diodos zener para um conversor ADC de 12 bits com tensão de referência V_ref = 3.3 V.
